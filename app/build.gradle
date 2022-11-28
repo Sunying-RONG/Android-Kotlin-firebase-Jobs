@@ -41,6 +41,7 @@ dependencies {
     // When using the BoM, don't specify versions in Firebase dependencies
     implementation 'com.google.firebase:firebase-analytics-ktx'
 //    implementation 'com.android.support:appcompat-v7:23.2.0'
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.4.1'
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'

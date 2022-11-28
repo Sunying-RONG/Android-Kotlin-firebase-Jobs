@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "430647406042",
-    "project_id": "jobsrendu-b117d",
-    "storage_bucket": "jobsrendu-b117d.appspot.com"
+    "project_number": "193349517401",
+    "project_id": "jobsrendu-676f9",
+    "storage_bucket": "jobsrendu-676f9.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:430647406042:android:71ac0e9fb6d0b7cc74a4e3",
+        "mobilesdk_app_id": "1:193349517401:android:7c28c36672acf32323f148",
         "android_client_info": {
           "package_name": "com.example.jobsrendu"
         }
       },
       "oauth_client": [
         {
-          "client_id": "430647406042-qut19b804f1hfvh8su9adsha5aabggep.apps.googleusercontent.com",
+          "client_id": "193349517401-11i9nicroif2tfqk00pkfvpdp38tpd3f.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCFet260kUYYFqA-ZN2-j7v6MdALOcHkkE"
+          "current_key": "AIzaSyCrSKD76WW423V1Ruc9NqJ8qvjEnA6jSMw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "430647406042-qut19b804f1hfvh8su9adsha5aabggep.apps.googleusercontent.com",
+              "client_id": "193349517401-11i9nicroif2tfqk00pkfvpdp38tpd3f.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
