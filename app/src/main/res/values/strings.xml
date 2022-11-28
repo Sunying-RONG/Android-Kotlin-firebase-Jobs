@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">JobsRendu</string>
+    <string name="logo">Jobs</string>
+    <string name="job_search">Job search</string>
+    <string name="lang_change">EN/中</string>
+    <string name="sign_in">Sign in</string>
+    <string name="job_what">What</string>
+    <string name="job_where">Where</string>
+    <string name="go">GO</string>
 </resources>
