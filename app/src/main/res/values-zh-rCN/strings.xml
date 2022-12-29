@@ -7,4 +7,10 @@
     <string name="job_what">工作</string>
     <string name="job_where">地点</string>
     <string name="go">搜索</string>
+    <string-array name="roles_array">
+        <item>求职者</item>
+        <item>公司</item>
+        <item>中介</item>
+        <item>管理员</item>
+    </string-array>
 </resources>

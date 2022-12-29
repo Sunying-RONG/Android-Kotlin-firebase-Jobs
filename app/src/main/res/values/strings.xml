@@ -7,4 +7,10 @@
     <string name="job_what">What</string>
     <string name="job_where">Where</string>
     <string name="go">GO</string>
+    <string-array name="roles_array">
+        <item>Job seeker</item>
+        <item>Employer</item>
+        <item>Agency</item>
+        <item>Administrator</item>
+    </string-array>
 </resources>
