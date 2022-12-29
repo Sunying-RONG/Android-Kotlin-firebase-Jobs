@@ -17,30 +17,35 @@ import com.google.firebase.ktx.Firebase
 import java.io.IOException
 import java.util.*
 
-class MainActivity : AppCompatActivity(), LocationListener, AdapterView.OnItemSelectedListener {
+class MainActivity : AppCompatActivity(), LocationListener {
     private lateinit var locationManager: LocationManager
-    private lateinit var tvGpsLocation: TextView
+//    private lateinit var tvGpsLocation: TextView
+    private var country_name = "Country"
     private val locationPermissionCode = 2
+    val navigationFragment = NavigationFragment()
+//    val mFragmentManager = supportFragmentManager
+//    val mFragmentTransaction = mFragmentManager.beginTransaction()
+    val mBundle = Bundle()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        mBundle.putString("country_name", "Country")
         getLocation()
         initializeCloudFirestore()
-        Log.d("test","print test")
-        val spinner: Spinner = findViewById(R.id.roles_spinner)
-        spinner.onItemSelectedListener = this
+//        val spinner: Spinner = findViewById(R.id.roles_spinner)
+//        spinner.onItemSelectedListener = this
 // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter.createFromResource(
-            this,
-            R.array.roles_array,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            // Specify the layout to use when the list of choices appears
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            // Apply the adapter to the spinner
-            spinner.adapter = adapter
-        }
+//        ArrayAdapter.createFromResource(
+//            this,
+//            R.array.roles_array,
+//            android.R.layout.simple_spinner_item
+//        ).also { adapter ->
+//            // Specify the layout to use when the list of choices appears
+//            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+//            // Apply the adapter to the spinner
+//            spinner.adapter = adapter
+//        }
     }
 
     private fun getLocation() {
@@ -51,8 +56,12 @@ class MainActivity : AppCompatActivity(), LocationListener, AdapterView.OnItemSe
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 5f, this)
     }
     override fun onLocationChanged(location: Location) {
-        tvGpsLocation = findViewById(R.id.tv_countryName)
-        tvGpsLocation.text = getCountryFromCoordinate(location.latitude, location.longitude)
+//        tvGpsLocation = findViewById(R.id.tv_countryName)
+//        tvGpsLocation.text = getCountryFromCoordinate(location.latitude, location.longitude)
+        country_name = getCountryFromCoordinate(location.latitude, location.longitude)
+        mBundle.putString("country_name", country_name)
+        navigationFragment.arguments = mBundle
+        supportFragmentManager.beginTransaction().replace(R.id.fragment_navigation, navigationFragment).commit()
     }
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -99,19 +108,5 @@ class MainActivity : AppCompatActivity(), LocationListener, AdapterView.OnItemSe
         }
 
     }
-
-    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-        when (p2) {
-            0 -> Log.d("select","Job seeker")
-            1 -> Log.d("select","Employer")
-            2 -> Log.d("select","Agency")
-            3 -> Log.d("select","Administrator")
-        }
-    }
-
-    override fun onNothingSelected(p0: AdapterView<*>?) {
-        Log.d("select nothing", "on select nothing")
-    }
-
 
 }

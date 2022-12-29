@@ -21,61 +21,13 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="1dp">
 
-        <LinearLayout
+        <androidx.fragment.app.FragmentContainerView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/fragment_navigation"
             android:layout_width="match_parent"
-            android:layout_height="59dp"
-            android:background="#C4E2FE"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tv_countryName"
-                android:layout_width="74dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Country"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="@string/job_search"
-                android:textColor="#000000" />
-
-            <TextView
-                android:layout_width="89dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="@string/logo"
-                android:textColor="#004382"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="72dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="@string/lang_change"
-                android:textColor="#000000" />
-
-            <TextView
-                android:layout_width="53dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="@string/sign_in"
-                android:textColor="#000000" />
-            <Spinner
-                android:id="@+id/roles_spinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-<!--            <ImageView-->
-<!--                android:id="@+id/imageView"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="match_parent"-->
-<!--                app:srcCompat="@drawable/ic_baseline_arrow_drop_down_24"-->
-<!--                tools:layout_editor_absoluteX="30dp"-->
-<!--                tools:layout_editor_absoluteY="88dp" />-->
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:name="com.example.jobsrendu.NavigationFragment" >
+        </androidx.fragment.app.FragmentContainerView>
 
         <TableLayout
             android:layout_width="match_parent"
