@@ -14,6 +14,7 @@ import android.widget.*
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 var country_name = "Country"
+var user_name = "Sign in"
 /**
  * A simple [Fragment] subclass.
  * Use the [NavigationFragment.newInstance] factory method to
@@ -24,6 +25,7 @@ class NavigationFragment : Fragment(), AdapterView.OnItemSelectedListener{
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var tvGpsLocation: TextView
+    private lateinit var userName: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,15 +42,19 @@ class NavigationFragment : Fragment(), AdapterView.OnItemSelectedListener{
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_navigation, container, false)
         tvGpsLocation = view.findViewById<TextView>(R.id.tv_countryName)
+        userName = view.findViewById<TextView>(R.id.user_name)
         val bundle = arguments
         if (!bundle?.getString("country_name").toString().equals("null")) {
             country_name = bundle?.getString("country_name").toString()
         }
+        if (!bundle?.getString("user_name").toString().equals("null")) {
+            user_name = bundle?.getString("user_name").toString()
+        }
         tvGpsLocation.text = country_name
+        userName.text = user_name
 
         val spinner: Spinner = view.findViewById(R.id.roles_spinner)
         spinner.onItemSelectedListener = this
-// Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter.createFromResource(
             requireActivity(),
             R.array.roles_array,
