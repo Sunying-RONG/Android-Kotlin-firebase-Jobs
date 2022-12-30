@@ -4,10 +4,18 @@
     <string name="lang_change">EN/中</string>
     <string name="job_search">工作搜索</string>
     <string name="sign_in">登录</string>
+    <string name="sign_up">注册</string>
     <string name="job_what">工作</string>
     <string name="job_where">地点</string>
     <string name="go">搜索</string>
+    <string name="submit">提交</string>
+    <string name="email">邮箱</string>
+    <string name="password">密码</string>
+    <string name="user_name">用户名</string>
+    <string name="phone">手机号</string>
+    <string name="notice_sign_up">没有账户，请  </string>
     <string-array name="roles_array">
+        <item>选择角色</item>
         <item>求职者</item>
         <item>公司</item>
         <item>中介</item>
