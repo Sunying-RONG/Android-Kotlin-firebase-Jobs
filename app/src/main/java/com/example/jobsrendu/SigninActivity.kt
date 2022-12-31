@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import com.google.firebase.firestore.QueryDocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -20,13 +21,20 @@ class SigninActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signin)
         val role = intent.getStringExtra("role").toString()
-
         val btn_sign_up = findViewById<Button>(R.id.sign_up)
+
         btn_sign_up.setOnClickListener {
-            val intentToSignUp = Intent(this, SignupActivity::class.java)
-            intentToSignUp.putExtra("role", role)
-            startActivity(intentToSignUp)
+            if (role.equals("Employer") || role.equals("Agency")) {
+                val intentToSubscription = Intent(this, SubscriptionActivity::class.java)
+                intentToSubscription.putExtra("role", role)
+                startActivity(intentToSubscription)
+            } else {
+                val intentToSignUp = Intent(this, SignupActivity::class.java)
+                intentToSignUp.putExtra("role", role)
+                startActivity(intentToSignUp)
+            }
         }
+
 
         val btn_submit = findViewById<Button>(R.id.submit)
         btn_submit.setOnClickListener {
@@ -53,22 +61,33 @@ class SigninActivity : AppCompatActivity() {
                 task ->
                 run {
                     val documents = task.result
+                    if (documents.size() == 0) {
+                        Toast.makeText(this, "Wrong email or password !", Toast.LENGTH_SHORT).show()
+                    }
                     for (document : QueryDocumentSnapshot in documents) {
                         if (document.get("email")?.equals(email) == true &&
                             document.get("password")?.equals(password) == true) {
-                            Log.d("Login: ", "success")
-                            mBundle.putString("user_name", document.get("user name") as String?)
-                            navigationFragment.arguments = mBundle
-                            supportFragmentManager.beginTransaction().replace(R.id.fragment_navigation, navigationFragment).commit()
-                            Log.d("role sign in: ", role)
-                            var intentToEmployer : Intent? = null
-                            when(role) {
-                                "Job seeker" -> {intentToEmployer = Intent(this, JobseekerActivity::class.java)}
-                                "Employer" -> {intentToEmployer = Intent(this, EmployerActivity::class.java)}
-                                "Agency" -> {intentToEmployer = Intent(this, AgencyActivity::class.java)}
-                                "Administrator" -> {intentToEmployer = Intent(this, AdminActivity::class.java)}
+                            if ((role.equals("Employer") || role.equals("Agency")) &&
+                                document.get("valid")?.equals("no") == true) {
+                                Toast.makeText(this, "Please wait for Admin validation !", Toast.LENGTH_SHORT).show()
+                            } else {
+                                Log.d("Login: ", "success")
+                                mBundle.putString("user_name", document.get("user name") as String?)
+                                navigationFragment.arguments = mBundle
+                                supportFragmentManager.beginTransaction().replace(R.id.fragment_navigation, navigationFragment).commit()
+                                Log.d("role sign in: ", role)
+                                var intentToEmployer : Intent? = null
+                                when(role) {
+                                    "Job seeker" -> {intentToEmployer = Intent(this, JobseekerActivity::class.java)}
+                                    "Employer" -> {intentToEmployer = Intent(this, EmployerActivity::class.java)}
+                                    "Agency" -> {intentToEmployer = Intent(this, AgencyActivity::class.java)}
+                                    "Administrator" -> {intentToEmployer = Intent(this, AdminActivity::class.java)}
+                                }
+                                startActivity(intentToEmployer)
                             }
-                            startActivity(intentToEmployer)
+                        } else {
+                            Log.d("sign in: ", "fail")
+                            Toast.makeText(this, "Wrong email or password !", Toast.LENGTH_SHORT).show()
                         }
                     }
                 }

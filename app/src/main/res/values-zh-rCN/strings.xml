@@ -16,6 +16,16 @@
     <string name="notice_sign_up">没有账户，请  </string>
     <string name="created_jobs">已发布的工作</string>
     <string name="create_job">发布一个新工作</string>
+    <string name="choose_plan">选择一个方案</string>
+    <string name="plan1">方案一</string>
+    <string name="plan1_sub">注册三个月</string>
+    <string name="plan1_price">二十欧</string>
+    <string name="plan2">方案二</string>
+    <string name="plan2_sub">注册六个月</string>
+    <string name="plan2_price">三十八欧</string>
+    <string name="plan3">方案三</string>
+    <string name="plan3_sub">注册十二个月</string>
+    <string name="plan3_price">七十四欧</string>
     <string-array name="roles_array">
         <item>选择角色</item>
         <item>求职者</item>

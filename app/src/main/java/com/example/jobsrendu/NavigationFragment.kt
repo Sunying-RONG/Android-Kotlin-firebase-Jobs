@@ -42,7 +42,7 @@ class NavigationFragment : Fragment(), AdapterView.OnItemSelectedListener{
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_navigation, container, false)
         tvGpsLocation = view.findViewById<TextView>(R.id.tv_countryName)
-        userName = view.findViewById<TextView>(R.id.user_name)
+        userName = view.findViewById<TextView>(R.id.user_name_sign_in)
         val bundle = arguments
         if (!bundle?.getString("country_name").toString().equals("null")) {
             country_name = bundle?.getString("country_name").toString()

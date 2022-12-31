@@ -16,9 +16,12 @@ class SignupActivity : AppCompatActivity() {
         setContentView(R.layout.activity_signup)
         val role = intent.getStringExtra("role").toString()
         Log.d("role in sign up: ", role)
+        val subscription = intent.getStringExtra("plan").toString()
+        Log.d("subscription: ", subscription)
+
         val btn_submit = findViewById<Button>(R.id.submit)
         btn_submit.setOnClickListener {
-            createUser(role)
+            createUser(role, subscription)
             val intent = Intent(this, SigninActivity::class.java)
             intent.putExtra("role", role)
             startActivity(intent)
@@ -26,7 +29,7 @@ class SignupActivity : AppCompatActivity() {
 
     }
 
-    fun createUser(role: String) {
+    fun createUser(role: String, subscription: String) {
         var userCollection = ""
         val user_name = findViewById<EditText>(R.id.user_name).text.toString()
         val phone = findViewById<EditText>(R.id.phone).text.toString()
@@ -35,12 +38,25 @@ class SignupActivity : AppCompatActivity() {
 
         val db = Firebase.firestore
         // Create a new user with a first and last name
-        val user = hashMapOf(
-            "user name" to user_name,
-            "phone" to phone,
-            "email" to email,
-            "password" to password
-        )
+        val user: HashMap<String, String>
+        if (role.equals("Employer") || role.equals("Agency")) {
+            user = hashMapOf(
+                "user name" to user_name,
+                "phone" to phone,
+                "email" to email,
+                "password" to password,
+                "plan" to subscription,
+                "valid" to "no"
+            )
+        } else {
+            user = hashMapOf(
+                "user name" to user_name,
+                "phone" to phone,
+                "email" to email,
+                "password" to password
+            )
+        }
+
         when(role) {
             "Job seeker" -> {userCollection = "Job seeker"}
             "Employer" -> {userCollection = "Employer"}

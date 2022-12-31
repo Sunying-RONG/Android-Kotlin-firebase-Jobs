@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity(), LocationListener {
         setContentView(R.layout.activity_main)
         mBundle.putString("country_name", "Country")
         getLocation()
-        initializeCloudFirestore()
+//        initializeCloudFirestore()
     }
 
     private fun getLocation() {
@@ -73,24 +73,24 @@ class MainActivity : AppCompatActivity(), LocationListener {
         return country;
     }
 
-    fun initializeCloudFirestore() {
-        val db = Firebase.firestore
-        // Create a new user with a first and last name
-        val user = hashMapOf(
-            "first" to "Ada",
-            "last" to "Lovelace",
-            "born" to 1815
-        )
-// Add a new document with a generated ID
-        db.collection("users")
-        .add(user)
-        .addOnSuccessListener { documentReference ->
-            Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
-        }
-        .addOnFailureListener { e ->
-            Log.w(TAG, "Error adding document", e)
-        }
-
-    }
+//    fun initializeCloudFirestore() {
+//        val db = Firebase.firestore
+//        // Create a new user with a first and last name
+//        val user = hashMapOf(
+//            "first" to "Ada",
+//            "last" to "Lovelace",
+//            "born" to 1815
+//        )
+//// Add a new document with a generated ID
+//        db.collection("users")
+//        .add(user)
+//        .addOnSuccessListener { documentReference ->
+//            Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+//        }
+//        .addOnFailureListener { e ->
+//            Log.w(TAG, "Error adding document", e)
+//        }
+//
+//    }
 
 }

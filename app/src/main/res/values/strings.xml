@@ -16,6 +16,16 @@
     <string name="notice_sign_up">Do not have an account, please </string>
     <string name="created_jobs">Created jobs</string>
     <string name="create_job">Create a new job</string>
+    <string name="choose_plan">Choose a plan</string>
+    <string name="plan1">Plan 1</string>
+    <string name="plan1_sub">3 months subscription</string>
+    <string name="plan1_price">20 euros</string>
+    <string name="plan2">Plan 2</string>
+    <string name="plan2_sub">6 months subscription</string>
+    <string name="plan2_price">38 euros</string>
+    <string name="plan3">Plan 3</string>
+    <string name="plan3_sub">12 months subscription</string>
+    <string name="plan3_price">74 euros</string>
     <string-array name="roles_array">
         <item>SELECT YOUR ROLE</item>
         <item>Job seeker</item>
