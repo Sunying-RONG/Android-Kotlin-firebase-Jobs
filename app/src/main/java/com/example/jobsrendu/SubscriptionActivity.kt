@@ -3,8 +3,15 @@ package com.example.jobsrendu
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.*
 import androidx.cardview.widget.CardView
+import androidx.core.view.marginBottom
+import com.google.firebase.firestore.QueryDocumentSnapshot
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class SubscriptionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,29 +19,37 @@ class SubscriptionActivity : AppCompatActivity() {
         setContentView(R.layout.activity_subscription)
 
         val role = intent.getStringExtra("role").toString()
-        
-        val card_plan1 = findViewById<CardView>(R.id.plan1)
-        card_plan1.setOnClickListener {
-            val intentToSignUp = Intent(this, SignupActivity::class.java)
-            intentToSignUp.putExtra("role", role)
-            intentToSignUp.putExtra("plan", "plan1")
-            startActivity(intentToSignUp)
-        }
+        getSubscritionsInfo(role)
+    }
 
-        val card_plan2 = findViewById<CardView>(R.id.plan2)
-        card_plan2.setOnClickListener {
-            val intentToSignUp = Intent(this, SignupActivity::class.java)
-            intentToSignUp.putExtra("role", role)
-            intentToSignUp.putExtra("plan", "plan2")
-            startActivity(intentToSignUp)
-        }
+    fun getSubscritionsInfo(role: String) {
+        val subscription_container = findViewById<LinearLayout>(R.id.subscription_container)
+        var view: View
 
-        val card_plan3 = findViewById<CardView>(R.id.plan3)
-        card_plan3.setOnClickListener {
-            val intentToSignUp = Intent(this, SignupActivity::class.java)
-            intentToSignUp.putExtra("role", role)
-            intentToSignUp.putExtra("plan", "plan3")
-            startActivity(intentToSignUp)
-        }
+        val db = Firebase.firestore
+        db.collection("Subscriptions")
+            .get()
+            .addOnCompleteListener {
+                    task ->
+                run {
+                    val documents = task.result
+                    for (document : QueryDocumentSnapshot in documents) {
+                        view = LayoutInflater.from(this).inflate(R.layout.subscripiton, null)
+                        view.findViewById<TextView>(R.id.sub_name).text = document.get("name") as String
+                        view.findViewById<TextView>(R.id.sub_time).text = document.get("time") as String
+                        view.findViewById<TextView>(R.id.sub_price).text = document.get("price") as String
+                        view.setOnClickListener {
+                            val intentToSignUp = Intent(this, SignupActivity::class.java)
+                            intentToSignUp.putExtra("role", role)
+                            intentToSignUp.putExtra("plan", document.id)
+                            startActivity(intentToSignUp)
+                        }
+                        subscription_container.addView(view)
+                    }
+                }
+
+            }
+
+
     }
 }

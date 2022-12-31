@@ -26,6 +26,7 @@
     <string name="plan3">Plan 3</string>
     <string name="plan3_sub">12 months subscription</string>
     <string name="plan3_price">74 euros</string>
+    <string name="subscriptions">Subscriptions</string>
     <string-array name="roles_array">
         <item>SELECT YOUR ROLE</item>
         <item>Job seeker</item>

@@ -26,6 +26,7 @@
     <string name="plan3">方案三</string>
     <string name="plan3_sub">注册十二个月</string>
     <string name="plan3_price">七十四欧</string>
+    <string name="subscriptions">注册名单</string>
     <string-array name="roles_array">
         <item>选择角色</item>
         <item>求职者</item>
