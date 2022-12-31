@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.Toast
 import com.google.firebase.firestore.QueryDocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
@@ -20,9 +21,14 @@ class SigninActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signin)
+
         val role = intent.getStringExtra("role").toString()
         val btn_sign_up = findViewById<Button>(R.id.sign_up)
 
+        val to_sign_up_layout = findViewById<LinearLayout>(R.id.to_sign_up)
+        if (role.equals("Administrator")) {
+            to_sign_up_layout.visibility = LinearLayout.GONE
+        }
         btn_sign_up.setOnClickListener {
             if (role.equals("Employer") || role.equals("Agency")) {
                 val intentToSubscription = Intent(this, SubscriptionActivity::class.java)

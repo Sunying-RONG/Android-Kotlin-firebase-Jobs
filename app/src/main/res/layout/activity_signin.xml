@@ -105,6 +105,7 @@
             android:textColor="#3F51B5" />
 
         <LinearLayout
+            android:id="@+id/to_sign_up"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:gravity="center"
