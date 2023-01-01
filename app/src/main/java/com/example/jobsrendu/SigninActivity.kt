@@ -52,6 +52,7 @@ class SigninActivity : AppCompatActivity() {
     }
 
     fun login(role: String) {
+        var found = false
         var userCollection = ""
         val email = findViewById<EditText>(R.id.email).text.toString()
         val password = findViewById<EditText>(R.id.password).text.toString()
@@ -76,11 +77,13 @@ class SigninActivity : AppCompatActivity() {
                     for (document : QueryDocumentSnapshot in documents) {
                         if (document.get("email")?.equals(email) == true &&
                             document.get("password")?.equals(password) == true) {
+                            found = true
                             if ((role.equals("Employer") || role.equals("Agency")) && document.get("valid")?.equals("pending") == true){
-                                    Toast.makeText(this, "Please wait for Admin validation !", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this, "Please wait for Admin validation !", Toast.LENGTH_SHORT).show()
                             } else if ((role.equals("Employer") || role.equals("Agency")) && document.get("valid")?.equals("no") == true) {
-                                Toast.makeText(this, "Sign up denied !", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this, "Subscription denied !", Toast.LENGTH_SHORT).show()
                             } else {
+                                Toast.makeText(this, "Login success !", Toast.LENGTH_SHORT).show()
                                 Log.d("Login", document.get("user name") as String)
                                 var editor = sharedPreferences.edit()
                                 editor.putString("login", document.get("user name") as String)
@@ -99,10 +102,12 @@ class SigninActivity : AppCompatActivity() {
                                 }
                                 startActivity(intentTo)
                             }
-                        } else {
-                            Log.d("sign in: ", "fail")
-                            Toast.makeText(this, "Wrong email or password !", Toast.LENGTH_SHORT).show()
                         }
+                        break
+                    }
+                    if (!found) {
+                        Log.d("sign in", "fail")
+                        Toast.makeText(this, "Wrong email or password !", Toast.LENGTH_SHORT).show()
                     }
                 }
 
