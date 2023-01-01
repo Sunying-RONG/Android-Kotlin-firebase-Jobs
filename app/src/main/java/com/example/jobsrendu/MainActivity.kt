@@ -1,8 +1,8 @@
 package com.example.jobsrendu
 
 import android.Manifest
-import android.content.ContentValues.TAG
 import android.content.Context
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.location.*
 import android.os.Bundle
@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity(), LocationListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         mBundle.putString("country_name", "Country")
         getLocation()
 //        initializeCloudFirestore()

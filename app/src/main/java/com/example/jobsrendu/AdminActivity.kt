@@ -1,5 +1,7 @@
 package com.example.jobsrendu
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -14,6 +16,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class AdminActivity : AppCompatActivity() {
+    lateinit var sharedPreferences: SharedPreferences
     var subscriptions = HashMap<String, HashMap<String, String>> ()
     lateinit var subscription_admin_container: LinearLayout
     val db = Firebase.firestore
@@ -22,6 +25,7 @@ class AdminActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin)
 
+        sharedPreferences = getSharedPreferences("login_user", Context.MODE_PRIVATE)
         subscription_admin_container = findViewById<LinearLayout>(R.id.subscription_admin_container)
         getSubscriptionsInfo()
         getEmployerSubscritionsInfo()
@@ -58,11 +62,12 @@ class AdminActivity : AppCompatActivity() {
                     val documents = task.result
                     for (document : QueryDocumentSnapshot in documents) {
                         if (document.get("valid")?.equals("pending")==true) {
+                            var plan = subscriptions.get(document.get("plan"))
                             view = LayoutInflater.from(this).inflate(R.layout.subscripiton_admin, null)
                             view.findViewById<TextView>(R.id.employer_name).text = document.get("user name") as String
                             view.findViewById<TextView>(R.id.employer_phone).text = document.get("phone") as String
                             view.findViewById<TextView>(R.id.employer_email).text = document.get("email") as String
-                            var plan = subscriptions.get(document.get("plan"))
+
                             view.findViewById<TextView>(R.id.employer_sub_time).text = plan?.get("time")
                             view.findViewById<TextView>(R.id.employer_sub_price).text = plan?.get("price")
 

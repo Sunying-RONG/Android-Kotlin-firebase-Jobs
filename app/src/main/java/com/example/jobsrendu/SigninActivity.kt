@@ -1,7 +1,9 @@
 package com.example.jobsrendu
 
 import android.content.ContentValues
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -15,12 +17,14 @@ import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.tasks.await
 
 class SigninActivity : AppCompatActivity() {
+    lateinit var sharedPreferences: SharedPreferences
     val navigationFragment = NavigationFragment()
     val mBundle = Bundle()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signin)
+        sharedPreferences = getSharedPreferences("login_user", Context.MODE_PRIVATE)
 
         val role = intent.getStringExtra("role").toString()
         val btn_sign_up = findViewById<Button>(R.id.sign_up)
@@ -40,7 +44,6 @@ class SigninActivity : AppCompatActivity() {
                 startActivity(intentToSignUp)
             }
         }
-
 
         val btn_submit = findViewById<Button>(R.id.submit)
         btn_submit.setOnClickListener {
@@ -78,11 +81,15 @@ class SigninActivity : AppCompatActivity() {
                             } else if ((role.equals("Employer") || role.equals("Agency")) && document.get("valid")?.equals("no") == true) {
                                 Toast.makeText(this, "Sign up denied !", Toast.LENGTH_SHORT).show()
                             } else {
-                                Log.d("Login: ", "success")
-                                mBundle.putString("user_name", document.get("user name") as String?)
-                                navigationFragment.arguments = mBundle
-                                supportFragmentManager.beginTransaction().replace(R.id.fragment_navigation, navigationFragment).commit()
-                                Log.d("role sign in: ", role)
+                                Log.d("Login", document.get("user name") as String)
+                                var editor = sharedPreferences.edit()
+                                editor.putString("login", document.get("user name") as String)
+                                editor.commit()
+
+//                                mBundle.putString("user_name", document.get("user name") as String?)
+//                                navigationFragment.arguments = mBundle
+//                                supportFragmentManager.beginTransaction().replace(R.id.fragment_navigation, navigationFragment).commit()
+                                Log.d("role sign in", role)
                                 var intentTo : Intent? = null
                                 when(role) {
                                     "Job seeker" -> {intentTo = Intent(this, JobseekerActivity::class.java)}

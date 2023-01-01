@@ -1,6 +1,8 @@
 package com.example.jobsrendu
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -26,6 +28,7 @@ class NavigationFragment : Fragment(), AdapterView.OnItemSelectedListener{
     private var param2: String? = null
     private lateinit var tvGpsLocation: TextView
     private lateinit var userName: TextView
+    lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,19 +42,30 @@ class NavigationFragment : Fragment(), AdapterView.OnItemSelectedListener{
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        sharedPreferences = context?.getSharedPreferences("login_user", 0)!!
+        Log.d("fragment login", sharedPreferences.getString("login", "").toString())
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_navigation, container, false)
         tvGpsLocation = view.findViewById<TextView>(R.id.tv_countryName)
         userName = view.findViewById<TextView>(R.id.user_name_sign_in)
-        val bundle = arguments
-        if (!bundle?.getString("country_name").toString().equals("null")) {
-            country_name = bundle?.getString("country_name").toString()
+        if (!arguments?.getString("country_name").toString().equals("null")) {
+            country_name = arguments?.getString("country_name").toString()
         }
-        if (!bundle?.getString("user_name").toString().equals("null")) {
-            user_name = bundle?.getString("user_name").toString()
+//        if (!arguments?.getString("user_name").toString().equals("null")) {
+//            user_name = arguments?.getString("user_name").toString()
+//        }
+        var loginValue = sharedPreferences.getString("login", "Sign in")
+        if (!loginValue.equals("null")) {
+            user_name = sharedPreferences?.getString("login", "Sign in").toString()
         }
+//        if (activity?.toString()?.contains("SigninActivity") == true) {
+//            arguments?.putString("user_name", "Sign in")
+//            user_name = arguments?.getString("user_name").toString()
+//            Log.d("user_name when signin", user_name)
+//        }
         tvGpsLocation.text = country_name
         userName.text = user_name
+        Log.d("user_name", user_name)
 
         val spinner: Spinner = view.findViewById(R.id.roles_spinner)
         spinner.onItemSelectedListener = this
@@ -112,6 +126,8 @@ class NavigationFragment : Fragment(), AdapterView.OnItemSelectedListener{
             }
         }
         if (formerSelect != p2) {
+            var editor = sharedPreferences.edit()
+            editor.remove("login")
             startActivity(intent)
         }
         formerSelect = p2
