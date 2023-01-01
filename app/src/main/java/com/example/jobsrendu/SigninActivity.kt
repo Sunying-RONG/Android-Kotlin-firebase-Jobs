@@ -73,23 +73,24 @@ class SigninActivity : AppCompatActivity() {
                     for (document : QueryDocumentSnapshot in documents) {
                         if (document.get("email")?.equals(email) == true &&
                             document.get("password")?.equals(password) == true) {
-                            if ((role.equals("Employer") || role.equals("Agency")) &&
-                                document.get("valid")?.equals("no") == true) {
-                                Toast.makeText(this, "Please wait for Admin validation !", Toast.LENGTH_SHORT).show()
+                            if ((role.equals("Employer") || role.equals("Agency")) && document.get("valid")?.equals("pending") == true){
+                                    Toast.makeText(this, "Please wait for Admin validation !", Toast.LENGTH_SHORT).show()
+                            } else if ((role.equals("Employer") || role.equals("Agency")) && document.get("valid")?.equals("no") == true) {
+                                Toast.makeText(this, "Sign up denied !", Toast.LENGTH_SHORT).show()
                             } else {
                                 Log.d("Login: ", "success")
                                 mBundle.putString("user_name", document.get("user name") as String?)
                                 navigationFragment.arguments = mBundle
                                 supportFragmentManager.beginTransaction().replace(R.id.fragment_navigation, navigationFragment).commit()
                                 Log.d("role sign in: ", role)
-                                var intentToEmployer : Intent? = null
+                                var intentTo : Intent? = null
                                 when(role) {
-                                    "Job seeker" -> {intentToEmployer = Intent(this, JobseekerActivity::class.java)}
-                                    "Employer" -> {intentToEmployer = Intent(this, EmployerActivity::class.java)}
-                                    "Agency" -> {intentToEmployer = Intent(this, AgencyActivity::class.java)}
-                                    "Administrator" -> {intentToEmployer = Intent(this, AdminActivity::class.java)}
+                                    "Job seeker" -> {intentTo = Intent(this, JobseekerActivity::class.java)}
+                                    "Employer" -> {intentTo = Intent(this, EmployerActivity::class.java)}
+                                    "Agency" -> {intentTo = Intent(this, AgencyActivity::class.java)}
+                                    "Administrator" -> {intentTo = Intent(this, AdminActivity::class.java)}
                                 }
-                                startActivity(intentToEmployer)
+                                startActivity(intentTo)
                             }
                         } else {
                             Log.d("sign in: ", "fail")

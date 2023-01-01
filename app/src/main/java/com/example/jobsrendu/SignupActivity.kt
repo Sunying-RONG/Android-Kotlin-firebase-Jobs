@@ -46,7 +46,7 @@ class SignupActivity : AppCompatActivity() {
                 "email" to email,
                 "password" to password,
                 "plan" to subscription,
-                "valid" to "no"
+                "valid" to "pending"
             )
         } else {
             user = hashMapOf(
