@@ -78,7 +78,6 @@ class NavigationFragment : Fragment(), AdapterView.OnItemSelectedListener{
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             // Apply the adapter to the spinner
             spinner.adapter = adapter
-
         }
         return view
     }
@@ -128,6 +127,7 @@ class NavigationFragment : Fragment(), AdapterView.OnItemSelectedListener{
         if (formerSelect != p2) {
             var editor = sharedPreferences.edit()
             editor.remove("login")
+            editor.commit()
             startActivity(intent)
         }
         formerSelect = p2
