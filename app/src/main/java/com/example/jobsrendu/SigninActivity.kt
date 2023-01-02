@@ -26,7 +26,11 @@ class SigninActivity : AppCompatActivity() {
         setContentView(R.layout.activity_signin)
         sharedPreferences = getSharedPreferences("login_user", Context.MODE_PRIVATE)
 
-        val role = intent.getStringExtra("role").toString()
+//        val role = intent.getStringExtra("role").toString()
+        val role = sharedPreferences.getString("role", "").toString()
+        if (role != null) {
+            Log.d("role in signin", role)
+        }
         val btn_sign_up = findViewById<Button>(R.id.sign_up)
 
         val to_sign_up_layout = findViewById<LinearLayout>(R.id.to_sign_up)
@@ -36,18 +40,20 @@ class SigninActivity : AppCompatActivity() {
         btn_sign_up.setOnClickListener {
             if (role.equals("Employer") || role.equals("Agency")) {
                 val intentToSubscription = Intent(this, SubscriptionActivity::class.java)
-                intentToSubscription.putExtra("role", role)
+//                intentToSubscription.putExtra("role", role)
                 startActivity(intentToSubscription)
             } else {
                 val intentToSignUp = Intent(this, SignupActivity::class.java)
-                intentToSignUp.putExtra("role", role)
+//                intentToSignUp.putExtra("role", role)
                 startActivity(intentToSignUp)
             }
         }
 
         val btn_submit = findViewById<Button>(R.id.submit)
         btn_submit.setOnClickListener {
-            login(role)
+            if (role != null) {
+                login(role)
+            }
         }
     }
 
@@ -87,6 +93,7 @@ class SigninActivity : AppCompatActivity() {
                                 Log.d("Login", document.get("user name") as String)
                                 var editor = sharedPreferences.edit()
                                 editor.putString("login", document.get("user name") as String)
+                                editor.putString("user_id", document.id)
                                 editor.commit()
 
 //                                mBundle.putString("user_name", document.get("user name") as String?)

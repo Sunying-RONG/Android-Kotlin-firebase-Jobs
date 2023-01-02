@@ -1,27 +1,38 @@
 package com.example.jobsrendu
 
 import android.content.ContentValues
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class SignupActivity : AppCompatActivity() {
+    lateinit var sharedPreferences: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
-        val role = intent.getStringExtra("role").toString()
-        Log.d("role in sign up: ", role)
+        sharedPreferences = getSharedPreferences("login_user", Context.MODE_PRIVATE)
+//        val role = intent.getStringExtra("role").toString()
+        val role = sharedPreferences.getString("role", "").toString()
+        if (role != null) {
+            Log.d("role in sign up: ", role)
+        }
         val subscription = intent.getStringExtra("plan").toString()
         Log.d("subscription: ", subscription)
 
         val btn_submit = findViewById<Button>(R.id.submit)
         btn_submit.setOnClickListener {
-            createUser(role, subscription)
+            if (role != null) {
+                createUser(role, subscription)
+            }
             val intent = Intent(this, SigninActivity::class.java)
             intent.putExtra("role", role)
             startActivity(intent)
@@ -68,9 +79,11 @@ class SignupActivity : AppCompatActivity() {
             .add(user)
             .addOnSuccessListener { documentReference ->
                 Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+                Toast.makeText(this, "Sign up sucess !", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener { e ->
                 Log.w(ContentValues.TAG, "Error adding document", e)
+                Toast.makeText(this, "Sign up failed !", Toast.LENGTH_SHORT).show()
             }
 
     }

@@ -14,7 +14,7 @@
     <string name="user_name">User name</string>
     <string name="phone">Phone</string>
     <string name="notice_sign_up">Do not have an account, please </string>
-    <string name="created_jobs">Created jobs</string>
+    <string name="created_jobs">Created job list</string>
     <string name="create_job">Create a new job</string>
     <string name="choose_plan">Choose a plan</string>
     <string name="plan1">Plan 1</string>
@@ -29,6 +29,10 @@
     <string name="subscriptions">Subscriptions</string>
     <string name="valid">VALID</string>
     <string name="refuse">REFUSE</string>
+    <string name="job_field">Job field</string>
+    <string name="city">City</string>
+    <string name="job_title">Job title</string>
+    <string name="description">Description</string>
     <string-array name="roles_array">
         <item>SELECT YOUR ROLE</item>
         <item>Job seeker</item>

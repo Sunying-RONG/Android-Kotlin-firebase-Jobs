@@ -29,6 +29,10 @@
     <string name="subscriptions">注册名单</string>
     <string name="valid">确认</string>
     <string name="refuse">拒绝</string>
+    <string name="job_field">工作领域</string>
+    <string name="city">城市</string>
+    <string name="job_title">职位</string>
+    <string name="description">描述</string>
     <string-array name="roles_array">
         <item>选择角色</item>
         <item>求职者</item>

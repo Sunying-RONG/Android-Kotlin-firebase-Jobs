@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:textAlignment="textStart"
-    tools:context=".MainActivity">
+    tools:context=".EmployerActivity">
     <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
     <!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
     <!--    xmlns:tools="http://schemas.android.com/tools"-->
@@ -33,50 +33,22 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="30dp"
             android:layout_marginBottom="10dp"
             android:gravity="center"
             android:text="@string/created_jobs"
             android:textSize="24sp" />
 
-        <TableLayout
+        <LinearLayout
+            android:id="@+id/created_jobs_container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center|center_vertical">
+            android:layout_height="364dp"
+            android:orientation="vertical">
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="43dp"
-                android:background="#FFFFFF"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="82dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/email"
-                    android:textSize="16sp" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:background="#FFFFFF"
-                android:gravity="center">
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="82dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/password"
-                    android:textSize="16sp" />
-            </TableRow>
-
-        </TableLayout>
+        </LinearLayout>
 
         <Button
-            android:id="@+id/submit"
+            android:id="@+id/to_create_job"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#009DCCF4"

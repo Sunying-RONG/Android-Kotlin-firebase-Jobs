@@ -44,6 +44,7 @@ class NavigationFragment : Fragment(), AdapterView.OnItemSelectedListener{
     ): View? {
         sharedPreferences = context?.getSharedPreferences("login_user", 0)!!
         Log.d("fragment login", sharedPreferences.getString("login", "").toString())
+        Log.d("fragment user_id", sharedPreferences.getString("user_id", "").toString())
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_navigation, container, false)
         tvGpsLocation = view.findViewById<TextView>(R.id.tv_countryName)
@@ -105,28 +106,35 @@ class NavigationFragment : Fragment(), AdapterView.OnItemSelectedListener{
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
         var formerSelect = 0;
         val intent = Intent(requireContext(), SigninActivity::class.java)
-
+        var editor = sharedPreferences.edit()
         when (p2) {
             1 -> {
-                intent.putExtra("role", "Job seeker")
-                Log.d("select","Job seeker")
+//                intent.putExtra("role", "Job seeker")
+                editor.putString("role", "Job seeker")
             }
             2 -> {
-                intent.putExtra("role", "Employer")
-                Log.d("select","Employer")
+//                intent.putExtra("role", "Employer")
+                editor.putString("role", "Employer")
             }
             3 -> {
-                intent.putExtra("role", "Agency")
-                Log.d("select","Agency")
+//                intent.putExtra("role", "Agency")
+                editor.putString("role", "Agency")
             }
             4 -> {
-                intent.putExtra("role", "Administrator")
-                Log.d("select","Administrator")
+//                intent.putExtra("role", "Administrator")
+                editor.putString("role", "Administrator")
             }
         }
+        editor.commit()
+        var role1 = sharedPreferences.getString("role","").toString()
+        Log.d("## role1 in fragment", role1)
+        var role2 = sharedPreferences.getString("role","")
+        if (role2 != null) {
+            Log.d("## role2 in fragment", role2)
+        }
         if (formerSelect != p2) {
-            var editor = sharedPreferences.edit()
             editor.remove("login")
+            editor.remove("user_id")
             editor.commit()
             startActivity(intent)
         }
