@@ -15,18 +15,21 @@
 <!--    android:layout_height="fill_parent"-->
 <!--    tools:context=".MainActivity">-->
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="542dp"
+        android:layout_width="413dp"
+        android:layout_height="734dp"
         android:orientation="vertical"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="1dp">
+        tools:layout_editor_absoluteX="-1dp">
 
         <androidx.fragment.app.FragmentContainerView
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/fragment_navigation"
+            android:name="com.example.jobsrendu.NavigationFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:name="com.example.jobsrendu.NavigationFragment" >
+            android:layout_height="wrap_content">
+
         </androidx.fragment.app.FragmentContainerView>
 
         <TableLayout
@@ -37,7 +40,8 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:background="#9CCBF3">
+                android:background="#9CCBF3"
+                android:gravity="center|left">
 
                 <TextView
                     android:id="@+id/textView2"
@@ -46,24 +50,21 @@
                     android:gravity="center"
                     android:text="@string/job_what" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="260dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:background="#EDEDED"
-                        android:hint="" />
-                </com.google.android.material.textfield.TextInputLayout>
+                <EditText
+                    android:id="@+id/what"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="#EDEDED"
+                    android:hint="" />
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:background="#9CCBF3">
+                android:background="#9CCBF3"
+                android:gravity="center|left">
 
                 <TextView
                     android:id="@+id/textView3"
@@ -72,21 +73,17 @@
                     android:gravity="center"
                     android:text="@string/job_where" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:background="#EDEDED"
-                        android:hint="" />
-                </com.google.android.material.textfield.TextInputLayout>
+                <EditText
+                    android:id="@+id/where"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="#EDEDED"
+                    android:hint="" />
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/go"
                     android:layout_width="55dp"
                     android:layout_height="wrap_content"
                     android:background="#009DCCF4"
@@ -96,8 +93,19 @@
             </TableRow>
 
         </TableLayout>
+        <ScrollView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/job_list_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
 
-    <!--</LinearLayout>-->
 </androidx.constraintlayout.widget.ConstraintLayout>
