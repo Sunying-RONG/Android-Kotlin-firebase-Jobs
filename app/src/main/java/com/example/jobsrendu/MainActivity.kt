@@ -154,6 +154,7 @@ class MainActivity : AppCompatActivity(), LocationListener {
                                     if (user_id != null && user_id.isNotEmpty()) {
                                         Log.d("user id in main", user_id)
                                         val intentToCandidate = Intent(this, CandidateActivity::class.java)
+                                        intentToCandidate.putExtra("job_id", document.id)
                                         startActivity(intentToCandidate)
                                     } else {
                                         val intentToSignIn = Intent(this, SigninActivity::class.java)

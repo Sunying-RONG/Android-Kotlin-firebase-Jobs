@@ -67,14 +67,12 @@ class SignupActivity : AppCompatActivity() {
                 "password" to password
             )
         }
-
         when(role) {
             "Job seeker" -> {userCollection = "Job seeker"}
             "Employer" -> {userCollection = "Employer"}
             "Agency" -> {userCollection = "Agency"}
             "Administrator" -> {userCollection = "Administrator"}
         }
-// Add a new document with a generated ID
         db.collection(userCollection)
             .add(user)
             .addOnSuccessListener { documentReference ->
@@ -85,6 +83,5 @@ class SignupActivity : AppCompatActivity() {
                 Log.w(ContentValues.TAG, "Error adding document", e)
                 Toast.makeText(this, "Sign up failed !", Toast.LENGTH_SHORT).show()
             }
-
     }
 }

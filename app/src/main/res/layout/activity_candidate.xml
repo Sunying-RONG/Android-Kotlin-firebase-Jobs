@@ -21,18 +21,18 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="1dp">
 
-<!--        <androidx.fragment.app.FragmentContainerView-->
-<!--            xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--            android:id="@+id/fragment_navigation"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:name="com.example.jobsrendu.NavigationFragment" >-->
-<!--        </androidx.fragment.app.FragmentContainerView>-->
+        <androidx.fragment.app.FragmentContainerView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/fragment_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="com.example.jobsrendu.NavigationFragment" >
+        </androidx.fragment.app.FragmentContainerView>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:layout_marginBottom="10dp"
             android:gravity="center"
             android:text="@string/fill_form"
@@ -58,15 +58,15 @@
                 android:gravity="center">
 
                 <TextView
-                    android:layout_width="82dp"
+                    android:layout_width="104dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
+                    android:gravity="center|left"
                     android:text="@string/last_name"
                     android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/last_name"
-                    android:layout_width="180dp"
+                    android:layout_width="178dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
@@ -79,10 +79,11 @@
                 android:layout_height="30dp"
                 android:background="#FFFFFF"
                 android:gravity="center">
+
                 <TextView
-                    android:layout_width="82dp"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
+                    android:gravity="center|left"
                     android:text="@string/first_name"
                     android:textSize="16sp" />
                 <EditText
@@ -100,10 +101,11 @@
                 android:layout_height="30dp"
                 android:background="#FFFFFF"
                 android:gravity="center">
+
                 <TextView
                     android:layout_width="82dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
+                    android:gravity="center|left"
                     android:text="@string/residence"
                     android:textSize="16sp" />
                 <EditText
@@ -121,10 +123,11 @@
                 android:layout_height="30dp"
                 android:background="#FFFFFF"
                 android:gravity="center">
+
                 <TextView
                     android:layout_width="82dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
+                    android:gravity="center|left"
                     android:text="@string/experience"
                     android:textSize="16sp" />
 
@@ -135,8 +138,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:background="#EDEDED"
-                    android:hint=""
-                    android:inputType="textPassword" />
+                    android:hint="" />
             </TableRow>
 
             <TableRow
@@ -144,10 +146,11 @@
                 android:layout_height="30dp"
                 android:background="#FFFFFF"
                 android:gravity="center">
+
                 <TextView
                     android:layout_width="82dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
+                    android:gravity="center|left"
                     android:text="@string/education"
                     android:textSize="16sp" />
 
@@ -158,8 +161,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:background="#EDEDED"
-                    android:hint=""
-                    android:inputType="textPassword" />
+                    android:hint="" />
             </TableRow>
 
             <TableRow
@@ -171,7 +173,7 @@
                 <TextView
                     android:layout_width="134dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
+                    android:gravity="center|left"
                     android:text="@string/profile_name"
                     android:textSize="16sp" />
 
@@ -182,14 +184,13 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:background="#EDEDED"
-                    android:hint=""
-                    android:inputType="textPassword" />
+                    android:hint="" />
             </TableRow>
 
         </TableLayout>
 
         <Button
-            android:id="@+id/submit"
+            android:id="@+id/submit_candidature"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#009DCCF4"

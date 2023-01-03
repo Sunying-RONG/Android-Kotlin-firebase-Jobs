@@ -41,6 +41,7 @@
     <string name="experience">工作经验</string>
     <string name="education">教育经历</string>
     <string name="profile_name">资料名称</string>
+    <string name="candidatures">已经申请的工作</string>
     <string-array name="roles_array">
         <item>选择角色</item>
         <item>求职者</item>
