@@ -33,6 +33,14 @@
     <string name="city">城市</string>
     <string name="job_title">职位</string>
     <string name="description">描述</string>
+    <string name="fill_form">请填写以下表格用于申请</string>
+    <string name="use_exist_profile">或使用已创建的申请信息</string>
+    <string name="last_name">姓</string>
+    <string name="first_name">名</string>
+    <string name="residence">居住地</string>
+    <string name="experience">工作经验</string>
+    <string name="education">教育经历</string>
+    <string name="profile_name">资料名称</string>
     <string-array name="roles_array">
         <item>选择角色</item>
         <item>求职者</item>

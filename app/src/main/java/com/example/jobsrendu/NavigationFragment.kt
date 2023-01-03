@@ -49,7 +49,13 @@ class NavigationFragment : Fragment(), AdapterView.OnItemSelectedListener{
         val view: View = inflater.inflate(R.layout.fragment_navigation, container, false)
         tvGpsLocation = view.findViewById<TextView>(R.id.tv_countryName)
         userName = view.findViewById<TextView>(R.id.user_name_sign_in)
-        if (!arguments?.getString("country_name").toString().equals("null")) {
+
+        val to_job_search = view.findViewById<TextView>(R.id.to_job_search)
+        to_job_search.setOnClickListener {
+            val intentToJobSearch = Intent(requireContext(), MainActivity::class.java)
+            startActivity(intentToJobSearch)
+        }
+            if (!arguments?.getString("country_name").toString().equals("null")) {
             country_name = arguments?.getString("country_name").toString()
         }
 //        if (!arguments?.getString("user_name").toString().equals("null")) {
@@ -126,12 +132,7 @@ class NavigationFragment : Fragment(), AdapterView.OnItemSelectedListener{
             }
         }
         editor.commit()
-        var role1 = sharedPreferences.getString("role","").toString()
-        Log.d("## role1 in fragment", role1)
-        var role2 = sharedPreferences.getString("role","")
-        if (role2 != null) {
-            Log.d("## role2 in fragment", role2)
-        }
+
         if (formerSelect != p2) {
             editor.remove("login")
             editor.remove("user_id")

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:textAlignment="textStart"
+    tools:context=".SignupActivity">
+    <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--    xmlns:tools="http://schemas.android.com/tools"-->
+    <!--    android:orientation="vertical"-->
+    <!--    android:layout_width="fill_parent"-->
+    <!--    android:layout_height="fill_parent"-->
+    <!--    tools:context=".MainActivity">-->
+    <LinearLayout
+        android:layout_width="413dp"
+        android:layout_height="731dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="1dp">
+
+<!--        <androidx.fragment.app.FragmentContainerView-->
+<!--            xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--            android:id="@+id/fragment_navigation"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:name="com.example.jobsrendu.NavigationFragment" >-->
+<!--        </androidx.fragment.app.FragmentContainerView>-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="@string/fill_form"
+            android:textSize="24sp" />
+        <Button
+            android:id="@+id/use_exist_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#009DCCF4"
+            android:gravity="center"
+            android:text="@string/use_exist_profile"
+            android:textColor="#3F51B5" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|center_vertical">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="#FFFFFF"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="82dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/last_name"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/last_name"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="#EDEDED"
+                    android:hint="" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="#FFFFFF"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="82dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/first_name"
+                    android:textSize="16sp" />
+                <EditText
+                    android:id="@+id/first_name"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="#EDEDED"
+                    android:hint="" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="#FFFFFF"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="82dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/residence"
+                    android:textSize="16sp" />
+                <EditText
+                    android:id="@+id/residence"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="#EDEDED"
+                    android:hint="" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="#FFFFFF"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="82dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/experience"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/experience"
+                    android:layout_width="180dp"
+                    android:layout_height="171dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="#EDEDED"
+                    android:hint=""
+                    android:inputType="textPassword" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="#FFFFFF"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="82dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/education"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/education"
+                    android:layout_width="180dp"
+                    android:layout_height="86dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="#EDEDED"
+                    android:hint=""
+                    android:inputType="textPassword" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="#FFFFFF"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="134dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/profile_name"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/profile_name"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="#EDEDED"
+                    android:hint=""
+                    android:inputType="textPassword" />
+            </TableRow>
+
+        </TableLayout>
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#009DCCF4"
+            android:gravity="center"
+            android:text="@string/submit"
+            android:textColor="#3F51B5" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -30,11 +30,12 @@ class MainActivity : AppCompatActivity(), LocationListener {
     val db = Firebase.firestore
     var employerList = HashMap<String, String>()
     var agencyList = HashMap<String, String>()
-
+    lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        sharedPreferences = getSharedPreferences("login_user", Context.MODE_PRIVATE)
 
         mBundle.putString("country_name", "Country")
         getLocation()
@@ -119,7 +120,7 @@ class MainActivity : AppCompatActivity(), LocationListener {
     fun searchJobs() {
         val what = findViewById<EditText>(R.id.what).text.toString()
         val where = findViewById<EditText>(R.id.where).text.toString()
-        val job_list_container = findViewById<LinearLayout>(R.id.job_list_container)
+        val job_list_container = findViewById<ScrollView>(R.id.job_list_container)
         job_list_container.removeAllViews()
         var view: View
 
@@ -146,12 +147,21 @@ class MainActivity : AppCompatActivity(), LocationListener {
                             }
                             view.findViewById<TextView>(R.id.created_city).text = document.get("city") as String
                             view.findViewById<TextView>(R.id.created_description).text = document.get("description") as String
-//                            view.setOnClickListener {
-//                                val intentToSignUp = Intent(this, SignupActivity::class.java)
-//                                intentToSignUp.putExtra("role", role)
-//                                intentToSignUp.putExtra("plan", document.id)
-//                                startActivity(intentToSignUp)
-//                            }
+                            var role = sharedPreferences.getString("role", "")
+                            if (role.equals("Job seeker")) {
+                                view.setOnClickListener {
+                                    var user_id = sharedPreferences.getString("user_id", "")
+                                    if (user_id != null && user_id.isNotEmpty()) {
+                                        Log.d("user id in main", user_id)
+                                        val intentToCandidate = Intent(this, CandidateActivity::class.java)
+                                        startActivity(intentToCandidate)
+                                    } else {
+                                        val intentToSignIn = Intent(this, SigninActivity::class.java)
+                                        startActivity(intentToSignIn)
+                                        Toast.makeText(this, "Please login as job seeker !", Toast.LENGTH_SHORT).show()
+                                    }
+                                }
+                            }
                             job_list_container.addView(view)
                         }
                     }

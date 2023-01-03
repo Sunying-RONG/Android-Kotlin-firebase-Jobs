@@ -33,6 +33,14 @@
     <string name="city">City</string>
     <string name="job_title">Job title</string>
     <string name="description">Description</string>
+    <string name="fill_form">Please fill the form to apply</string>
+    <string name="use_exist_profile">Or use an existing candidature profile</string>
+    <string name="last_name">Last name</string>
+    <string name="first_name">First name</string>
+    <string name="residence">Residence</string>
+    <string name="experience">Experience</string>
+    <string name="education">Education</string>
+    <string name="profile_name">Profile name</string>
     <string-array name="roles_array">
         <item>SELECT YOUR ROLE</item>
         <item>Job seeker</item>
