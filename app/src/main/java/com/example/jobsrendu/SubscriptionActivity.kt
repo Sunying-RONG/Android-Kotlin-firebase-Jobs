@@ -1,6 +1,7 @@
 package com.example.jobsrendu
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -14,11 +15,14 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class SubscriptionActivity : AppCompatActivity() {
+    lateinit var sharedPreferences: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_subscription)
 
-        val role = intent.getStringExtra("role").toString()
+        val role = sharedPreferences.getString("role", "").toString()
+//        val role = intent.getStringExtra("role").toString()
         getSubscritionsInfo(role)
     }
 

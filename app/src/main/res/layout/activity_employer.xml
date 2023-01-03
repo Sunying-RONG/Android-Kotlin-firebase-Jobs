@@ -21,13 +21,13 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="1dp">
 
-        <androidx.fragment.app.FragmentContainerView
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/fragment_navigation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:name="com.example.jobsrendu.NavigationFragment" >
-        </androidx.fragment.app.FragmentContainerView>
+<!--        <androidx.fragment.app.FragmentContainerView-->
+<!--            xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--            android:id="@+id/fragment_navigation"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:name="com.example.jobsrendu.NavigationFragment" >-->
+<!--        </androidx.fragment.app.FragmentContainerView>-->
 
         <TextView
             android:id="@+id/textView"
@@ -42,7 +42,7 @@
         <LinearLayout
             android:id="@+id/created_jobs_container"
             android:layout_width="match_parent"
-            android:layout_height="364dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
         </LinearLayout>
