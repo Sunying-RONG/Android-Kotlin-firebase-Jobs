@@ -7,21 +7,14 @@
     android:background="#FFFFFF"
     android:textAlignment="textStart"
     tools:context=".MainActivity">
-<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    android:orientation="vertical"-->
-<!--    android:layout_width="fill_parent"-->
-<!--    android:layout_height="fill_parent"-->
-<!--    tools:context=".MainActivity">-->
+
     <LinearLayout
         android:layout_width="414dp"
         android:layout_height="733dp"
         android:orientation="vertical"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="-2dp">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.fragment.app.FragmentContainerView
             xmlns:android="http://schemas.android.com/apk/res/android"
@@ -96,14 +89,6 @@
             android:id="@+id/job_list_container"
             android:layout_width="match_parent"
             android:layout_height="640dp">
-
-            <!--            <LinearLayout-->
-            <!--                android:id="@+id/job_list_container"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:orientation="vertical">-->
-
-            <!--            </LinearLayout>-->
         </ScrollView>
     </LinearLayout>
 

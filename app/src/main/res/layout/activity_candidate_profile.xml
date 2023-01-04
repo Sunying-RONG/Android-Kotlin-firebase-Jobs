@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:textAlignment="textStart"
-    tools:context=".AdminActivity">
+    tools:context=".CandidateProfileActivity">
 
     <LinearLayout
         android:layout_width="413dp"
@@ -23,22 +21,19 @@
         </androidx.fragment.app.FragmentContainerView>
 
         <TextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:layout_marginBottom="10dp"
             android:gravity="center"
-            android:text="@string/subscriptions"
+            android:text="@string/select_existing_profile"
             android:textSize="24sp" />
 
-        <LinearLayout
-            android:id="@+id/subscription_admin_container"
+        <ScrollView
+            android:id="@+id/profile_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-        </LinearLayout>
-
+            android:layout_height="640dp">
+        </ScrollView>
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

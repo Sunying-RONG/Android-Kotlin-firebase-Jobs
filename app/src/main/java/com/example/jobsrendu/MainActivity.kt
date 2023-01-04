@@ -149,7 +149,6 @@ class MainActivity : AppCompatActivity(), LocationListener {
                             view.findViewById<TextView>(R.id.created_city).text = document.get("city") as String
                             view.findViewById<TextView>(R.id.created_description).text = document.get("description") as String
                             view.findViewById<TextView>(R.id.created_date).visibility = View.GONE
-                            view.findViewById<TextView>(R.id.candidature_profile).visibility = View.GONE
                             view.findViewById<TextView>(R.id.status).visibility = View.GONE
                             var role = sharedPreferences.getString("role", "")
                             if (role.equals("Job seeker")) {

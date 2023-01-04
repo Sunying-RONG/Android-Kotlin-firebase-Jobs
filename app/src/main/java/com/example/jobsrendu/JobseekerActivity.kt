@@ -39,10 +39,7 @@ class JobseekerActivity : AppCompatActivity() {
                 run {
                     val documents = task.result
                     for (document : QueryDocumentSnapshot in documents) {
-                        Log.d("user_id", user_id)
-                        Log.d("job seeker id", document.get("job seeker id").toString())
                         if (document.get("job seeker id").toString().equals(user_id) == true) {
-
                             var job_id = document.get("job id").toString()
 
                             db.collection("Jobs")
@@ -97,7 +94,6 @@ class JobseekerActivity : AppCompatActivity() {
                                 }
 
                             view.findViewById<TextView>(R.id.created_date).text = "Candidature date: " + document.get("date") as String
-                            view.findViewById<TextView>(R.id.candidature_profile).text = "Candidature profile: "+document.get("profile name") as String
                             view.findViewById<TextView>(R.id.status).text = "Status: "+document.get("status") as String
                             view.findViewById<TextView>(R.id.created_description).visibility = View.GONE
 //                            view.setOnClickListener {

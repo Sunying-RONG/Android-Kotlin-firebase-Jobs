@@ -42,6 +42,7 @@
     <string name="education">Education</string>
     <string name="profile_name">Profile name</string>
     <string name="candidatures">Recent candidatures</string>
+    <string name="select_existing_profile">Please select an existing profile</string>
     <string-array name="roles_array">
         <item>SELECT YOUR ROLE</item>
         <item>Job seeker</item>

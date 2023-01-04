@@ -28,7 +28,8 @@ class CandidateActivity : AppCompatActivity() {
 
         val btn_exit_profile = findViewById<Button>(R.id.use_exist_profile)
         btn_exit_profile.setOnClickListener {
-
+            val intentToProfile = Intent(this, CandidateProfileActivity::class.java)
+            startActivity(intentToProfile)
         }
 
         val btn_submit = findViewById<Button>(R.id.submit_candidature)
@@ -53,31 +54,48 @@ class CandidateActivity : AppCompatActivity() {
         var createDate = formatter.format(date)
 
         val db = Firebase.firestore
-        val candidature: HashMap<String, String>
-        candidature = hashMapOf(
+        val profile: HashMap<String, String>
+        profile = hashMapOf(
             "last name" to last_name,
             "first name" to first_name,
             "residence" to residence,
             "experience" to experience,
             "education" to education,
             "profile name" to profile_name,
-            "job seeker id" to user_id,
-            "job id" to job_id,
-            "status" to "waiting for reply",
-            "date" to createDate
+            "job seeker id" to user_id
         )
-
-        db.collection("Candidatures")
-            .add(candidature)
+        var profile_id: String
+        db.collection("Profiles")
+            .add(profile)
             .addOnSuccessListener { documentReference ->
                 Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
-                Toast.makeText(this, "Candidate sucess !", Toast.LENGTH_SHORT).show()
-                val intentToJobseeker = Intent(this, JobseekerActivity::class.java)
-                startActivity(intentToJobseeker)
+                profile_id = documentReference.id
+                val candidature: HashMap<String, String>
+                candidature = hashMapOf(
+                    "job seeker id" to user_id,
+                    "job id" to job_id,
+                    "status" to "waiting for reply",
+                    "date" to createDate,
+                    "profile id" to profile_id
+                )
+
+                db.collection("Candidatures")
+                    .add(candidature)
+                    .addOnSuccessListener { documentReference ->
+                        Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+                        Toast.makeText(this, "Candidate sucess !", Toast.LENGTH_SHORT).show()
+                        val intentToJobseeker = Intent(this, JobseekerActivity::class.java)
+                        startActivity(intentToJobseeker)
+                    }
+                    .addOnFailureListener { e ->
+                        Log.w(ContentValues.TAG, "Error adding document", e)
+                        Toast.makeText(this, "Candidate failed !", Toast.LENGTH_SHORT).show()
+                    }
             }
             .addOnFailureListener { e ->
                 Log.w(ContentValues.TAG, "Error adding document", e)
-                Toast.makeText(this, "Candidate failed !", Toast.LENGTH_SHORT).show()
             }
+
+
     }
 }

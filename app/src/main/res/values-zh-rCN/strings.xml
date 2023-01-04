@@ -42,6 +42,7 @@
     <string name="education">教育经历</string>
     <string name="profile_name">资料名称</string>
     <string name="candidatures">已经申请的工作</string>
+    <string name="select_existing_profile">请选择一个已经创建的档案</string>
     <string-array name="roles_array">
         <item>选择角色</item>
         <item>求职者</item>
