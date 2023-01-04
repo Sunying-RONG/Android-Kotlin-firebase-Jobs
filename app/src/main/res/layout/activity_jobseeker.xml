@@ -33,14 +33,11 @@
             android:text="@string/candidatures"
             android:textSize="24sp" />
 
-        <LinearLayout
+        <ScrollView
             android:id="@+id/candidatures_container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-        </LinearLayout>
-
+            android:layout_height="658dp">
+        </ScrollView>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

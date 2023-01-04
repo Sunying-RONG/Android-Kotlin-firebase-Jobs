@@ -14,6 +14,7 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.isInvisible
 import com.google.firebase.firestore.QueryDocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -147,6 +148,9 @@ class MainActivity : AppCompatActivity(), LocationListener {
                             }
                             view.findViewById<TextView>(R.id.created_city).text = document.get("city") as String
                             view.findViewById<TextView>(R.id.created_description).text = document.get("description") as String
+                            view.findViewById<TextView>(R.id.created_date).visibility = View.GONE
+                            view.findViewById<TextView>(R.id.candidature_profile).visibility = View.GONE
+                            view.findViewById<TextView>(R.id.status).visibility = View.GONE
                             var role = sharedPreferences.getString("role", "")
                             if (role.equals("Job seeker")) {
                                 view.setOnClickListener {

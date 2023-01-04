@@ -12,6 +12,9 @@ import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.HashMap
 
 class CandidateActivity : AppCompatActivity() {
     lateinit var sharedPreferences: SharedPreferences
@@ -22,6 +25,11 @@ class CandidateActivity : AppCompatActivity() {
         sharedPreferences = getSharedPreferences("login_user", Context.MODE_PRIVATE)
         val user_id = sharedPreferences.getString("user_id", "")
         val job_id = intent.getStringExtra("job_id")
+
+        val btn_exit_profile = findViewById<Button>(R.id.use_exist_profile)
+        btn_exit_profile.setOnClickListener {
+
+        }
 
         val btn_submit = findViewById<Button>(R.id.submit_candidature)
         btn_submit.setOnClickListener {
@@ -40,6 +48,10 @@ class CandidateActivity : AppCompatActivity() {
         val education = findViewById<EditText>(R.id.education).text.toString()
         val profile_name = findViewById<EditText>(R.id.profile_name).text.toString()
 
+        val formatter = SimpleDateFormat("dd/MM/yyyy");
+        var date = Date()
+        var createDate = formatter.format(date)
+
         val db = Firebase.firestore
         val candidature: HashMap<String, String>
         candidature = hashMapOf(
@@ -49,8 +61,10 @@ class CandidateActivity : AppCompatActivity() {
             "experience" to experience,
             "education" to education,
             "profile name" to profile_name,
-            "job seeker id " to user_id,
-            "job id" to job_id
+            "job seeker id" to user_id,
+            "job id" to job_id,
+            "status" to "waiting for reply",
+            "date" to createDate
         )
 
         db.collection("Candidatures")
