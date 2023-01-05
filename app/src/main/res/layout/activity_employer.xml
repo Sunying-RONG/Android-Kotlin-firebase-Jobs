@@ -33,9 +33,13 @@
             android:textSize="24sp" />
 
         <ScrollView
-            android:id="@+id/created_jobs_container"
             android:layout_width="match_parent"
             android:layout_height="560dp">
+            <LinearLayout
+                android:id="@+id/created_jobs_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"></LinearLayout>
         </ScrollView>
 
         <Button

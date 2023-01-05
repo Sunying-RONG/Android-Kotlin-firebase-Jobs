@@ -37,7 +37,8 @@ class CheckCandidateActivity : AppCompatActivity() {
     }
 
     fun getCandidates(job_id: String, role: String) {
-        val check_candidate_container = findViewById<ScrollView>(R.id.check_candidate_container)
+        val check_candidate_container = findViewById<LinearLayout>(R.id.check_candidate_container)
+        check_candidate_container.removeAllViews()
         var view: View
         val responses = resources.getStringArray(R.array.response)
 
@@ -68,7 +69,7 @@ class CheckCandidateActivity : AppCompatActivity() {
                                                 task2 ->
                                                 run {
                                                     val job_seeker = task2.result
-                                                    view.findViewById<TextView>(R.id.candidate_phone).text = "Phone: "+job_seeker.get("phone").toString()
+                                                    view.findViewById<TextView>(R.id.candidate_phone).text = job_seeker.get("phone").toString()
                                                     view.findViewById<TextView>(R.id.candidate_email).text = "Email: "+job_seeker.get("email").toString()
                                                 }
                                             }

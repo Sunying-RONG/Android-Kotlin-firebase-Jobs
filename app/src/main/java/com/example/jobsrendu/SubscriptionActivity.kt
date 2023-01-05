@@ -1,5 +1,6 @@
 package com.example.jobsrendu
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +22,7 @@ class SubscriptionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_subscription)
 
+        sharedPreferences = getSharedPreferences("login_user", Context.MODE_PRIVATE)
         val role = sharedPreferences.getString("role", "").toString()
 //        val role = intent.getStringExtra("role").toString()
         getSubscritionsInfo(role)
@@ -28,6 +30,7 @@ class SubscriptionActivity : AppCompatActivity() {
 
     fun getSubscritionsInfo(role: String) {
         val subscription_container = findViewById<LinearLayout>(R.id.subscription_container)
+        subscription_container.removeAllViews()
         var view: View
 
         val db = Firebase.firestore

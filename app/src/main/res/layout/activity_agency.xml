@@ -4,6 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:textAlignment="textStart"
     tools:context=".AgencyActivity">
+
+    <LinearLayout
+        android:layout_width="413dp"
+        android:layout_height="731dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.fragment.app.FragmentContainerView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/fragment_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="com.example.jobsrendu.NavigationFragment" >
+        </androidx.fragment.app.FragmentContainerView>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="@string/created_jobs"
+            android:textSize="24sp" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="560dp">
+            <LinearLayout
+                android:id="@+id/created_jobs_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"></LinearLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/to_create_job_agency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#009DCCF4"
+            android:gravity="center"
+            android:text="@string/create_job"
+            android:textColor="#3F51B5" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

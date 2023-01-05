@@ -126,6 +126,30 @@
                     android:background="#EDEDED"
                     android:hint="" />
             </TableRow>
+
+            <TableRow
+                android:id="@+id/company_row"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="#FFFFFF"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="82dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/company"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/job_company"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="#EDEDED"
+                    android:hint="" />
+            </TableRow>
         </TableLayout>
 
         <Button

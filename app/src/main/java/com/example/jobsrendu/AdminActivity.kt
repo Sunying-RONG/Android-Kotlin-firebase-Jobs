@@ -27,9 +27,10 @@ class AdminActivity : AppCompatActivity() {
 
         sharedPreferences = getSharedPreferences("login_user", Context.MODE_PRIVATE)
         subscription_admin_container = findViewById<LinearLayout>(R.id.subscription_admin_container)
+        subscription_admin_container.removeAllViews()
         getSubscriptionsInfo()
         getEmployerSubscritionsInfo()
-//        getAgencySubscritionsInfo()
+        getAgencySubscritionsInfo()
     }
 
     fun getSubscriptionsInfo() {

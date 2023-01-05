@@ -37,7 +37,8 @@ class CandidateProfileActivity : AppCompatActivity() {
     }
 
     fun getProfiles(user_id: String, job_id: String) {
-        val profile_container = findViewById<ScrollView>(R.id.profile_container)
+        val profile_container = findViewById<LinearLayout>(R.id.profile_container)
+        profile_container.removeAllViews()
         var view: View
 
         val db = Firebase.firestore
@@ -49,13 +50,8 @@ class CandidateProfileActivity : AppCompatActivity() {
                     val documents = task.result
                     for (document : QueryDocumentSnapshot in documents) {
                         if (document.get("job seeker id").toString().equals(user_id)) {
-                            view = LayoutInflater.from(this).inflate(R.layout.createdjob, null)
-                            view.findViewById<TextView>(R.id.created_title).text = "Profile: "+document.get("profile name") as String
-                            view.findViewById<TextView>(R.id.provider).visibility = View.GONE
-                            view.findViewById<TextView>(R.id.created_city).visibility = View.GONE
-                            view.findViewById<TextView>(R.id.created_description).visibility = View.GONE
-                            view.findViewById<TextView>(R.id.created_date).visibility = View.GONE
-                            view.findViewById<TextView>(R.id.status).visibility = View.GONE
+                            view = LayoutInflater.from(this).inflate(R.layout.createdjob_profile, null)
+                            view.findViewById<TextView>(R.id.created_title_profile).text = "Profile: "+document.get("profile name") as String
 
                             val formatter = SimpleDateFormat("dd/MM/yyyy");
                             var date = Date()

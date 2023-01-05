@@ -45,6 +45,7 @@
     <string name="select_existing_profile">Please select an existing profile</string>
     <string name="candidates">Candidates</string>
     <string name="response_to_candidate">Response to candidate</string>
+    <string name="company">Company</string>
     <string-array name="roles_array">
         <item>SELECT YOUR ROLE</item>
         <item>Job seeker</item>

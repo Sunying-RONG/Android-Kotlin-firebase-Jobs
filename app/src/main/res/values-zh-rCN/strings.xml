@@ -45,6 +45,7 @@
     <string name="select_existing_profile">请选择一个已经创建的档案</string>
     <string name="candidates">候选人</string>
     <string name="response_to_candidate">回复候选人</string>
+    <string name="company">公司</string>
     <string-array name="roles_array">
         <item>选择角色</item>
         <item>求职者</item>

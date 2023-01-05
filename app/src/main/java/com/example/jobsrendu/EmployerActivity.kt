@@ -34,7 +34,8 @@ class EmployerActivity : AppCompatActivity() {
     }
 
     fun getJobs(user_id: String) {
-        val created_jobs_container = findViewById<ScrollView>(R.id.created_jobs_container)
+        val created_jobs_container = findViewById<LinearLayout>(R.id.created_jobs_container)
+        created_jobs_container.removeAllViews()
         var view: View
 
         val db = Firebase.firestore
@@ -46,13 +47,13 @@ class EmployerActivity : AppCompatActivity() {
                     val documents = task.result
                     for (document : QueryDocumentSnapshot in documents) {
                         if (document.get("provider id")?.equals(user_id) == true) {
-                            view = LayoutInflater.from(this).inflate(R.layout.createdjob, null)
+                            view = LayoutInflater.from(this).inflate(R.layout.createdjob_employer, null)
                             var title = document.get("job title") as String
                             var city = document.get("city") as String
                             var desc = document.get("description") as String
-                            view.findViewById<TextView>(R.id.created_title).text = title
-                            view.findViewById<TextView>(R.id.created_city).text = city
-                            view.findViewById<TextView>(R.id.created_description).text = desc
+                            view.findViewById<TextView>(R.id.created_title_employer).text = title
+                            view.findViewById<TextView>(R.id.created_city_employer).text = city
+                            view.findViewById<TextView>(R.id.created_description_employer).text = desc
 
                             view.findViewById<TextView>(R.id.provider).visibility = View.GONE
                             view.findViewById<TextView>(R.id.created_date).visibility = View.GONE

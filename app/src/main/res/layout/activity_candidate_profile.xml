@@ -31,9 +31,13 @@
             android:textSize="24sp" />
 
         <ScrollView
-            android:id="@+id/profile_container"
             android:layout_width="match_parent"
             android:layout_height="640dp">
+            <LinearLayout
+                android:id="@+id/profile_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"></LinearLayout>
         </ScrollView>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

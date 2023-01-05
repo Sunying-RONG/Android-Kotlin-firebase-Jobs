@@ -40,8 +40,8 @@ class MainActivity : AppCompatActivity(), LocationListener {
 
         mBundle.putString("country_name", "Country")
         getLocation()
-        getEmployerName()
-        getAgencyName()
+//        getEmployerName()
+//        getAgencyName()
 
         val btn_go = findViewById<Button>(R.id.go)
         btn_go.setOnClickListener {
@@ -75,7 +75,6 @@ class MainActivity : AppCompatActivity(), LocationListener {
             }
         }
     }
-
     fun getCountryFromCoordinate(latitude: Double, longitude: Double): String {
         var geocoder = Geocoder(getApplicationContext(), Locale.getDefault())
         var country: String = ""
@@ -121,7 +120,7 @@ class MainActivity : AppCompatActivity(), LocationListener {
     fun searchJobs() {
         val what = findViewById<EditText>(R.id.what).text.toString()
         val where = findViewById<EditText>(R.id.where).text.toString()
-        val job_list_container = findViewById<ScrollView>(R.id.job_list_container)
+        val job_list_container = findViewById<LinearLayout>(R.id.job_list_container)
         job_list_container.removeAllViews()
         var view: View
 
@@ -141,11 +140,7 @@ class MainActivity : AppCompatActivity(), LocationListener {
                         ) {
                             view = LayoutInflater.from(this).inflate(R.layout.createdjob, null)
                             view.findViewById<TextView>(R.id.created_title).text = document.get("job title") as String
-                            if ((document.get("role") as String).equals("Employer")) {
-                                view.findViewById<TextView>(R.id.provider).text = employerList.get(document.get("provider id"))
-                            } else if ((document.get("role") as String).equals("Agency")) {
-                                view.findViewById<TextView>(R.id.provider).text = agencyList.get(document.get("provider id"))
-                            }
+                            view.findViewById<TextView>(R.id.provider).text = document.get("company") as String
                             view.findViewById<TextView>(R.id.created_city).text = document.get("city") as String
                             view.findViewById<TextView>(R.id.created_description).text = document.get("description") as String
                             view.findViewById<TextView>(R.id.created_date).visibility = View.GONE
