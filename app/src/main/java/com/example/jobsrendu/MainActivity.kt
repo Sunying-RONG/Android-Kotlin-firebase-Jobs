@@ -89,34 +89,6 @@ class MainActivity : AppCompatActivity(), LocationListener {
         return country;
     }
 
-    fun getEmployerName() {
-        db.collection("Employer")
-            .get()
-            .addOnCompleteListener {
-                task ->
-                run {
-                    val documents = task.result
-                    for (document : QueryDocumentSnapshot in documents) {
-                        employerList.put(document.id, document.get("user name") as String)
-                    }
-                }
-            }
-    }
-
-    fun getAgencyName() {
-        db.collection("Agency")
-            .get()
-            .addOnCompleteListener {
-                    task ->
-                run {
-                    val documents = task.result
-                    for (document : QueryDocumentSnapshot in documents) {
-                        agencyList.put(document.id, document.get("user name") as String)
-                    }
-                }
-            }
-    }
-
     fun searchJobs() {
         val what = findViewById<EditText>(R.id.what).text.toString()
         val where = findViewById<EditText>(R.id.where).text.toString()

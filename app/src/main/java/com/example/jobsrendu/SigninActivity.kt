@@ -81,8 +81,11 @@ class SigninActivity : AppCompatActivity() {
                         Toast.makeText(this, "Wrong email or password !", Toast.LENGTH_SHORT).show()
                     }
                     for (document : QueryDocumentSnapshot in documents) {
-                        if (document.get("email")?.equals(email) == true &&
-                            document.get("password")?.equals(password) == true) {
+                        Log.d("email", document.get("email").toString())
+                        Log.d("password", document.get("password").toString())
+                        if (document.get("email").toString().equals(email) == true &&
+                            document.get("password").toString().equals(password) == true) {
+                            Log.d("found", "right")
                             found = true
                             if ((role.equals("Employer") || role.equals("Agency")) && document.get("valid")?.equals("pending") == true){
                                 Toast.makeText(this, "Please wait for Admin validation !", Toast.LENGTH_SHORT).show()
@@ -109,8 +112,8 @@ class SigninActivity : AppCompatActivity() {
                                 }
                                 startActivity(intentTo)
                             }
+                            break
                         }
-                        break
                     }
                     if (!found) {
                         Log.d("sign in", "fail")
