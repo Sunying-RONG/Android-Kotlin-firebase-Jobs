@@ -23,7 +23,6 @@ var user_name = "Sign in"
  * create an instance of this fragment.
  */
 class NavigationFragment : Fragment(), AdapterView.OnItemSelectedListener{
-    // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var tvGpsLocation: TextView
@@ -55,8 +54,20 @@ class NavigationFragment : Fragment(), AdapterView.OnItemSelectedListener{
             val intentToJobSearch = Intent(requireContext(), MainActivity::class.java)
             startActivity(intentToJobSearch)
         }
-            if (!arguments?.getString("country_name").toString().equals("null")) {
-            country_name = arguments?.getString("country_name").toString()
+        val role = sharedPreferences.getString("role", "").toString()
+        val user_name_sign_in = view.findViewById<TextView>(R.id.user_name_sign_in)
+        user_name_sign_in.setOnClickListener {
+            var intentTo : Intent? = null
+            when(role) {
+                "Job seeker" -> {intentTo = Intent(requireContext(), JobseekerActivity::class.java)}
+                "Employer" -> {intentTo = Intent(requireContext(), EmployerActivity::class.java)}
+                "Agency" -> {intentTo = Intent(requireContext(), AgencyActivity::class.java)}
+                "Administrator" -> {intentTo = Intent(requireContext(), AdminActivity::class.java)}
+            }
+            startActivity(intentTo)
+        }
+        if (!arguments?.getString("country_name").toString().equals("null")) {
+        country_name = arguments?.getString("country_name").toString()
         }
 //        if (!arguments?.getString("user_name").toString().equals("null")) {
 //            user_name = arguments?.getString("user_name").toString()

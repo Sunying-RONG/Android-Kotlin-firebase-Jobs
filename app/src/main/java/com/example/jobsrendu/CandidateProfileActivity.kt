@@ -1,18 +1,24 @@
 package com.example.jobsrendu
 
+import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
+import android.widget.Toast
 import com.google.firebase.firestore.QueryDocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.HashMap
 
 class CandidateProfileActivity : AppCompatActivity() {
     lateinit var sharedPreferences: SharedPreferences
@@ -21,12 +27,16 @@ class CandidateProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_candidate_profile)
 
+        val job_id = intent.getStringExtra("job_id")
+
         sharedPreferences = getSharedPreferences("login_user", Context.MODE_PRIVATE)
         val user_id = sharedPreferences.getString("user_id", "").toString()
-        getProfiles(user_id)
+        if (job_id != null) {
+            getProfiles(user_id, job_id)
+        }
     }
 
-    fun getProfiles(user_id: String) {
+    fun getProfiles(user_id: String, job_id: String) {
         val profile_container = findViewById<ScrollView>(R.id.profile_container)
         var view: View
 
@@ -46,9 +56,33 @@ class CandidateProfileActivity : AppCompatActivity() {
                             view.findViewById<TextView>(R.id.created_description).visibility = View.GONE
                             view.findViewById<TextView>(R.id.created_date).visibility = View.GONE
                             view.findViewById<TextView>(R.id.status).visibility = View.GONE
+
+                            val formatter = SimpleDateFormat("dd/MM/yyyy");
+                            var date = Date()
+                            var createDate = formatter.format(date)
+
+                            val candidature: HashMap<String, String>
+                            candidature = hashMapOf(
+                                "job seeker id" to user_id,
+                                "job id" to job_id,
+                                "status" to "waiting for reply",
+                                "response" to "",
+                                "date" to createDate,
+                                "profile id" to document.id
+                            )
                             view.setOnClickListener {
-//                            val intentToSignUp = Intent(this, SignupActivity::class.java)
-//                            startActivity(intentToSignUp)
+                                db.collection("Candidatures")
+                                    .add(candidature)
+                                    .addOnSuccessListener { documentReference ->
+                                        Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+                                        Toast.makeText(this, "Candidate sucess !", Toast.LENGTH_SHORT).show()
+                                        val intentToJobseeker = Intent(this, JobseekerActivity::class.java)
+                                        startActivity(intentToJobseeker)
+                                    }
+                                    .addOnFailureListener { e ->
+                                        Log.w(ContentValues.TAG, "Error adding document", e)
+                                        Toast.makeText(this, "Candidate failed !", Toast.LENGTH_SHORT).show()
+                                    }
                             }
                             profile_container.addView(view)
                         }

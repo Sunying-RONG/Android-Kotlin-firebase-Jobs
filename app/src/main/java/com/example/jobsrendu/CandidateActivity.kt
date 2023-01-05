@@ -29,6 +29,7 @@ class CandidateActivity : AppCompatActivity() {
         val btn_exit_profile = findViewById<Button>(R.id.use_exist_profile)
         btn_exit_profile.setOnClickListener {
             val intentToProfile = Intent(this, CandidateProfileActivity::class.java)
+            intentToProfile.putExtra("job_id", job_id)
             startActivity(intentToProfile)
         }
 
@@ -75,6 +76,7 @@ class CandidateActivity : AppCompatActivity() {
                     "job seeker id" to user_id,
                     "job id" to job_id,
                     "status" to "waiting for reply",
+                    "response" to "",
                     "date" to createDate,
                     "profile id" to profile_id
                 )

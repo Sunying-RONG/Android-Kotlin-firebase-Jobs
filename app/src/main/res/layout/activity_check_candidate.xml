@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:textAlignment="textStart"
-    tools:context=".EmployerActivity">
+    tools:context=".CheckCandidateActivity">
 
     <LinearLayout
         android:layout_width="413dp"
@@ -21,31 +21,37 @@
             android:layout_height="wrap_content"
             android:name="com.example.jobsrendu.NavigationFragment" >
         </androidx.fragment.app.FragmentContainerView>
+        <TextView
+            android:id="@+id/select_title"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="left"
+            android:paddingLeft="10dp"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/select_city"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="left"
+            android:paddingLeft="10dp"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             android:layout_marginBottom="10dp"
             android:gravity="center"
-            android:text="@string/created_jobs"
+            android:text="@string/candidates"
             android:textSize="24sp" />
 
         <ScrollView
-            android:id="@+id/created_jobs_container"
+            android:id="@+id/check_candidate_container"
             android:layout_width="match_parent"
-            android:layout_height="560dp">
+            android:layout_height="570dp">
         </ScrollView>
-
-        <Button
-            android:id="@+id/to_create_job"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#009DCCF4"
-            android:gravity="center"
-            android:text="@string/create_job"
-            android:textColor="#3F51B5" />
 
     </LinearLayout>
 

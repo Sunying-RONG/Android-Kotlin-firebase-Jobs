@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/created_title"
+        android:id="@+id/candidate_name"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:gravity="center|left"
@@ -17,7 +17,7 @@
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/provider"
+        android:id="@+id/candidate_residence"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:gravity="center|left"
@@ -25,14 +25,7 @@
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/created_city"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:gravity="center|left"
-        android:paddingLeft="10dp"
-        android:textSize="16sp" />
-    <TextView
-        android:id="@+id/created_description"
+        android:id="@+id/candidate_experience"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center|left"
@@ -42,7 +35,7 @@
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/status"
+        android:id="@+id/candidate_education"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:gravity="center|left"
@@ -50,12 +43,46 @@
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/created_date"
+        android:id="@+id/candidate_phone"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:gravity="center|left"
         android:paddingLeft="10dp"
         android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/candidate_email"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center|left"
+        android:paddingLeft="10dp"
+        android:textSize="16sp" />
+
+    <Spinner
+        android:id="@+id/candidate_status"
+        android:layout_width="235dp"
+        android:layout_height="40dp"
+        android:gravity="center|left"
+        android:paddingLeft="10dp"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/response"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#EDEDED"
+        android:hint="@string/response_to_candidate" />
+
+    <Button
+        android:id="@+id/submit_to_candidate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#009DCCF4"
+        android:gravity="center"
+        android:text="@string/submit"
+        android:textColor="#3F51B5" />
 
     <FrameLayout
         android:layout_width="match_parent"

@@ -95,13 +95,7 @@ class JobseekerActivity : AppCompatActivity() {
 
                             view.findViewById<TextView>(R.id.created_date).text = "Candidature date: " + document.get("date") as String
                             view.findViewById<TextView>(R.id.status).text = "Status: "+document.get("status") as String
-                            view.findViewById<TextView>(R.id.created_description).visibility = View.GONE
-//                            view.setOnClickListener {
-//                                val intentToSignUp = Intent(this, SignupActivity::class.java)
-//                                intentToSignUp.putExtra("role", role)
-//                                intentToSignUp.putExtra("plan", document.id)
-//                                startActivity(intentToSignUp)
-//                            }
+                            view.findViewById<TextView>(R.id.created_description).text = "Response: "+document.get("response") as String
                             candidatures_container.addView(view)
                         }
                     }

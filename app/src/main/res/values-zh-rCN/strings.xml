@@ -43,11 +43,19 @@
     <string name="profile_name">资料名称</string>
     <string name="candidatures">已经申请的工作</string>
     <string name="select_existing_profile">请选择一个已经创建的档案</string>
+    <string name="candidates">候选人</string>
+    <string name="response_to_candidate">回复候选人</string>
     <string-array name="roles_array">
         <item>选择角色</item>
         <item>求职者</item>
         <item>公司</item>
         <item>中介</item>
         <item>管理员</item>
+    </string-array>
+    <string-array name="response">
+        <item>请选择状态</item>
+        <item>等待回复</item>
+        <item>接受</item>
+        <item>拒绝</item>
     </string-array>
 </resources>
