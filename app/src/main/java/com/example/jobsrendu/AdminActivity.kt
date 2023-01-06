@@ -29,8 +29,7 @@ class AdminActivity : AppCompatActivity() {
         subscription_admin_container = findViewById<LinearLayout>(R.id.subscription_admin_container)
         subscription_admin_container.removeAllViews()
         getSubscriptionsInfo()
-        getEmployerSubscritionsInfo()
-        getAgencySubscritionsInfo()
+
     }
 
     fun getSubscriptionsInfo() {
@@ -50,6 +49,8 @@ class AdminActivity : AppCompatActivity() {
                         subscriptions.set(document.id, docCollection)
                     }
                 }
+                getEmployerSubscritionsInfo()
+                getAgencySubscritionsInfo()
             }
     }
 

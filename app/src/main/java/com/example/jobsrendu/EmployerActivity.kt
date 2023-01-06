@@ -55,9 +55,6 @@ class EmployerActivity : AppCompatActivity() {
                             view.findViewById<TextView>(R.id.created_city_employer).text = city
                             view.findViewById<TextView>(R.id.created_description_employer).text = desc
 
-                            view.findViewById<TextView>(R.id.provider).visibility = View.GONE
-                            view.findViewById<TextView>(R.id.created_date).visibility = View.GONE
-                            view.findViewById<TextView>(R.id.status).visibility = View.GONE
                             view.setOnClickListener {
                                 val intentToCheckCandidate = Intent(this, CheckCandidateActivity::class.java)
                                 intentToCheckCandidate.putExtra("title", title)

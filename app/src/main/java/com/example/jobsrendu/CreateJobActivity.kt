@@ -26,7 +26,9 @@ class CreateJobActivity : AppCompatActivity() {
         val role = sharedPreferences.getString("role", "")
         val user_id = sharedPreferences.getString("user_id", "")
         val user_name = sharedPreferences.getString("login", "")
-
+        if (role.equals("Employer")) {
+            findViewById<TableRow>(R.id.company_row).visibility = View.GONE
+        }
         val btn_create_job = findViewById<Button>(R.id.btn_create_job)
         btn_create_job.setOnClickListener {
             if (role != null && user_id != null && user_name != null) {
@@ -37,9 +39,9 @@ class CreateJobActivity : AppCompatActivity() {
     }
 
     fun createJob(role: String, user_id: String, user_name: String) {
+        Log.d("role", role)
         var company: String
         if (role.equals("Employer")) {
-            findViewById<TableRow>(R.id.company_row).visibility = View.GONE
             company = user_name
         } else {
             company = findViewById<EditText>(R.id.job_company).text.toString()

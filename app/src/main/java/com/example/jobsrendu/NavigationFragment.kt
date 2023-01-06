@@ -16,7 +16,6 @@ import android.widget.*
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 var country_name = "Country"
-var user_name = "Sign in"
 /**
  * A simple [Fragment] subclass.
  * Use the [NavigationFragment.newInstance] factory method to
@@ -47,7 +46,6 @@ class NavigationFragment : Fragment(), AdapterView.OnItemSelectedListener{
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_navigation, container, false)
         tvGpsLocation = view.findViewById<TextView>(R.id.tv_countryName)
-        userName = view.findViewById<TextView>(R.id.user_name_sign_in)
 
         val to_job_search = view.findViewById<TextView>(R.id.to_job_search)
         to_job_search.setOnClickListener {
@@ -56,6 +54,7 @@ class NavigationFragment : Fragment(), AdapterView.OnItemSelectedListener{
         }
         val role = sharedPreferences.getString("role", "").toString()
         val user_name_sign_in = view.findViewById<TextView>(R.id.user_name_sign_in)
+        val user_name_default = user_name_sign_in.text.toString()
         user_name_sign_in.setOnClickListener {
             var intentTo : Intent? = null
             when(role) {
@@ -69,21 +68,16 @@ class NavigationFragment : Fragment(), AdapterView.OnItemSelectedListener{
         if (!arguments?.getString("country_name").toString().equals("null")) {
         country_name = arguments?.getString("country_name").toString()
         }
-//        if (!arguments?.getString("user_name").toString().equals("null")) {
-//            user_name = arguments?.getString("user_name").toString()
-//        }
-        var loginValue = sharedPreferences.getString("login", "Sign in")
+
+        var loginValue = sharedPreferences.getString("login", user_name_default)
         if (!loginValue.equals("null")) {
-            user_name = sharedPreferences?.getString("login", "Sign in").toString()
+            var loginName = sharedPreferences?.getString("login", user_name_default).toString()
+            user_name_sign_in.text = loginName
+        } else {
+            user_name_sign_in.text = user_name_default
         }
-//        if (activity?.toString()?.contains("SigninActivity") == true) {
-//            arguments?.putString("user_name", "Sign in")
-//            user_name = arguments?.getString("user_name").toString()
-//            Log.d("user_name when signin", user_name)
-//        }
+
         tvGpsLocation.text = country_name
-        userName.text = user_name
-        Log.d("user_name", user_name)
 
         val spinner: Spinner = view.findViewById(R.id.roles_spinner)
         spinner.onItemSelectedListener = this
@@ -126,19 +120,15 @@ class NavigationFragment : Fragment(), AdapterView.OnItemSelectedListener{
         var editor = sharedPreferences.edit()
         when (p2) {
             1 -> {
-//                intent.putExtra("role", "Job seeker")
                 editor.putString("role", "Job seeker")
             }
             2 -> {
-//                intent.putExtra("role", "Employer")
                 editor.putString("role", "Employer")
             }
             3 -> {
-//                intent.putExtra("role", "Agency")
                 editor.putString("role", "Agency")
             }
             4 -> {
-//                intent.putExtra("role", "Administrator")
                 editor.putString("role", "Administrator")
             }
         }
